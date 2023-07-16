@@ -1,0 +1,60 @@
+
+
+class Solution
+{
+    public:
+    //Function to sort an array using quick sort algorithm.
+    void quickSort(int arr[], int low, int high)
+    {
+        // code here
+        if(low>=high)
+        return ;
+        
+        int p=partition(arr,low,high);
+        
+        quickSort(arr,low,p-1);
+        quickSort(arr,p+1,high);
+        
+    }
+    
+    public:
+    int partition (int arr[], int low, int high)
+    {
+       // Your code here
+       int paviot=arr[low];
+       int cnt=0;
+       
+       for(int i=low+1;i<=high;i++)
+       {
+           if(arr[i]<=paviot)
+           {
+               cnt++;
+           }
+       }
+       
+       int paviotIndex=low+cnt;
+       swap(arr[paviotIndex],arr[low]);
+       
+       int i=low;
+       int j=high;
+       
+       while(i<paviotIndex && j>paviotIndex)
+       {
+           while(arr[i]<=paviot)
+           {
+               i++;
+           }
+           
+           while(arr[j]>paviot)
+           {
+               j--;
+           }
+           
+           if(i<paviotIndex && j>paviotIndex)
+           {
+               swap(arr[i++],arr[j--]);
+           }
+       }
+       return paviotIndex;
+    }
+};
