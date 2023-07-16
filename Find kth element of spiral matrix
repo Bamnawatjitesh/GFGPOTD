@@ -1,0 +1,85 @@
+class Solution
+{
+    public:
+    /*You are required to complete this method*/
+    int findK(int matrix[MAX][MAX],int r,int c,int k)
+    {
+//  		vector<int>ans;
+        
+        int starti=0;
+
+        int endi=r-1;
+
+        int startj=0;
+
+        int endj=c-1;
+
+        int count=0;
+
+        int total=r*c;
+
+        
+
+        while(count<total){
+
+            
+
+            for(int i=startj; i<=endj && count<total ; i++){
+
+                // ans.push_back(matrix[starti][i]);
+
+                count++;
+                
+                if(count==k) return matrix[starti][i];
+
+            }
+
+            starti++;
+
+            
+
+            for(int i=starti; i<=endi && count<total ; i++){
+
+                // ans.push_back(matrix[i][endj]);
+
+                count++;
+                
+                if(count==k) return matrix[i][endj];
+
+            }
+
+            endj--;
+
+            
+
+            for(int i=endj; i>=startj && count<total ; i--){
+
+                // ans.push_back(matrix[endi][i]);
+
+                count++;
+                
+                if(count==k) return matrix[endi][i];
+
+            }
+
+            endi--;
+
+            
+
+            for(int i=endi; i>=starti && count<total ; i--){
+
+                // ans.push_back(matrix[i][startj]);
+
+                count++;
+                
+                if(count==k) return matrix[i][startj];
+
+            }
+
+            startj++;
+
+        }
+    }
+};
+
+
