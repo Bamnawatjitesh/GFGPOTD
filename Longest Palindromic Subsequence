@@ -1,0 +1,25 @@
+class Solution{
+  public:
+  int n;
+  vector<vector<int>>dp;
+  int solve(string A,int i,int j){
+      if(i>j)return 0;
+      if(i==j)return 1;
+      if(dp[i][j]!=-1)return dp[i][j];
+      int maxx=-1e9;
+      if(A[i]==A[j]){
+          maxx=max(maxx,2+solve(A,i+1,j-1));
+      }
+      else{
+          maxx=max(maxx,0+solve(A,i+1,j));
+          maxx=max(maxx,0+solve(A,i,j-1));
+      }
+      return dp[i][j]=maxx;
+  }
+    int longestPalinSubseq(string A) {
+        //code here
+        n=A.size();
+        dp.resize(n,vector<int>(n,-1));
+        return solve(A,0,n-1);
+    }
+};
